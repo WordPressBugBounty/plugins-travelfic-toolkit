@@ -4,12 +4,12 @@
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 1.3.1
- * Tested up to: 6.8
+ * Version: 1.3.5
+ * Tested up to: 6.9
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.31
+ * Elementor tested up to: 3.34.1
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -24,7 +24,11 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_ASSETS', TRAVELFIC_TOOLKIT_URL . 'assets/' );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.3.1' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.3.5' );
+
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
 
 /**
  * Include file from plugin if it is not available in theme
@@ -70,6 +74,8 @@ add_action( 'init', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
 
 function travelfic_toolkit_plugin_loaded_action() {
     load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+
+    appsero_init_tracker_travelfic_toolkit();
 }
 
 /**
@@ -245,6 +251,26 @@ if ( !function_exists( 'travelfic_install' ) ) {
 	<?php
     }
 }
+
+
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+function appsero_init_tracker_travelfic_toolkit() {
+
+    $client = new Appsero\Client( '7929498b-c2c3-47f9-b8db-ad56e0090a98', 'Travelfic Toolkit', __FILE__ );
+
+    // Change Admin notice text
+    $notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from  %1$s (I can unsubscribe anytime).' ), $client->name );
+    $client->insights()->notice( $notice );
+    
+    // Active insights
+    $client->insights()->init();
+
+}
+
 
 /**
  *    Admin See Template Action

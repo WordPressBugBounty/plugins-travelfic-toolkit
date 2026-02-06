@@ -2,8 +2,8 @@
 Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
-Tested up to: 6.8
-Stable tag: 1.3.1
+Tested up to: 6.9
+Stable tag: 1.3.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -147,6 +147,25 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.3.5 – January 20, 2025 =
+
+- Improved: System stability has been improved.
+- Fixed: Minor bugs and issues have been fixed.
+
+= 1.3.4 – January 18, 2025 =
+
+- Fixed: Resolved a security vulnerability.
+
+= 1.3.3 – January 16, 2025 =
+
+- Info: System stability has been improved.
+
+= 1.3.2 – January 06, 2025 =
+
+- Fixed: Resolved a security vulnerability.
+- Fixed: Corrected static text translation issues.
+- Compatibility: Compatible with WordPress 6.9.
 
 = 1.3.1 – September 27, 2025 =
 
